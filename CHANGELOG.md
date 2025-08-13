@@ -5,6 +5,8 @@ All notable changes to the "quest-script" extension will be documented in this f
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 ## [Unreleased]
+## v1.1.4
+### Added
 - added code folding with `#region` and `#endregion`
 - added support for in-line comments.
 
