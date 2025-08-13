@@ -70,6 +70,9 @@
           ],
           "string": [
             "string.qscript"
+          ],
+          "comment": [
+            "comment.qscript"
           ]
         }
       }

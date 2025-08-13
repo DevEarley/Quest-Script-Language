@@ -26,6 +26,26 @@
 				"match":"^(?:\\[)(.*)(?:\\])" 			
 			},
 			{				
+				"name": "comment.qscript",
+				"match":"^(//.*)" 			
+			},
+			{				
+				"name": "comment.qscript",
+				"match":"^(#region.*)" 			
+			},
+			{				
+				"name": "comment.qscript",
+				"match":"^(#endregion.*)" 			
+			},
+			{				
+				"name": "comment.qscript",
+				"match":"^(#REGION.*)" 			
+			},
+			{				
+				"name": "comment.qscript",
+				"match":"^(#ENDREGION.*)" 			
+			},
+			{				
 				"name": "entity.go.qscript",
 				"match":"^(go)(?:\\[)(.*)(?:\\])" 		,
 				"captures": {
