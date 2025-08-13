@@ -6,6 +6,9 @@
     "name": "AsFunAsFun",
     "email": "dev@asfunas.fun"
   },
+  "repository": {
+    "url": "https://github.com/DevEarley/Quest-Script-Language"
+  },
   "scripts": {
     "package": "vsce package",
     "compile": "tsc -p ./"
