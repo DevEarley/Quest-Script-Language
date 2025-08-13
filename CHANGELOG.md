@@ -6,6 +6,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 - added code folding with `#region` and `#endregion`
+- added support for in-line comments.
+
 ## v1.1.3
 ### Added
 - v1.1.3 Support for *.TRES files
