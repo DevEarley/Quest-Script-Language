@@ -5,8 +5,8 @@ All notable changes to the "quest-script" extension will be documented in this f
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 ## [Unreleased]
-
-
+- Nothing yet.
+## v1.1.3
 ### Added
 - v1.1.3 Support for *.TRES files
 
