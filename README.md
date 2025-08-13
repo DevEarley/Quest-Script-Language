@@ -28,10 +28,7 @@
 
 - Created By Alex "Dev" Earley 
 - Created on 2/4/25 
-- Updated on 8/12/25
-
-
-
+- Updated on 8/13/25
 
 # Compile
 ```
@@ -51,3 +48,8 @@ npm run package
 # Install
 
 Download (or build) the VSIX file. Open Visual Studio, open the extensions view, click the `...` in the upper left and click `Install from VSIX...` from the dropdown menu.
+
+# How to use Quest Script
+
+Follow this guide for more information: https://gist.github.com/DevEarley/7cce1f08b92514237aeca8ae08c9b254
+
