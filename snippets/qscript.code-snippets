@@ -1,0 +1,39 @@
+{
+	"Say Text": {
+		"prefix": "say",
+		"body": [
+			"say[${0}]"
+		],
+		"description": "Say Text"
+	},
+	"Do Action": {
+		"prefix": "do",
+		"body": [
+			"do[$)]"
+		],
+		"description": "Do some action"
+	},
+	"Go To Marker": {
+		"prefix": "go",
+		"body": [
+			"go[${1:key}]"
+		],
+		"description": "Go to marker"
+	},
+	
+	"If Statement": {
+		"prefix": "if",
+		"body": [
+			"if[$function($params)]$makerTrue",
+            "go[$markerFalse]",
+            "",
+			"[$makerTrue]", 
+            "REPLACE_ME",     
+            "",      
+			"[$markerFalse]",
+            "REPLACE_ME",
+		],
+		"description": "If block"
+	}
+	
+}

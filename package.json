@@ -1,0 +1,90 @@
+{
+  "name": "quest-script",
+  "displayName": "Quest Script",
+  "description": "Support for quest script.",
+  "author": {
+    "name": "AsFunAsFun",
+    "email": "dev@asfunas.fun"
+  },
+  "scripts": {
+    "package": "vsce package",
+    "compile": "tsc -p ./"
+  },
+  "version": "0.0.4",
+  "engines": {
+    "vscode": "^1.103.0"
+  },
+  "main": "./out/extension",
+	"browser": "./out/extension",
+  "categories": [
+    "Programming Languages"
+  ],
+  "capabilities": {
+    "documentSymbolProvider": "true",
+		"untrustedWorkspaces": {
+			"supported": true
+		}
+	},
+
+	"activationEvents": [
+		"onLanguage:qscript"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "qscript",
+        "aliases": [
+          "Quest Script",
+          "qscript"
+        ],
+        "extensions": [
+          ".qscript",
+          ".cfg"
+        ],
+        
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "qscript",
+        "path": "./snippets/qscript.code-snippets"
+      }
+    ],
+    "semanticTokenScopes": [
+      {
+        "language": "qscript",
+        "scopes": {
+          "support.property-value": [
+            "support.property-value.qscript"
+          ],
+          "entity.name.function": [
+            "entity.name.function.qscript"
+          ],
+          "entity.name.method": [
+            "entity.name.method.qscript"
+          ],
+          "keyword.control": [
+            "keyword.control.qscript"
+          ],
+          "string": [
+            "string.qscript"
+          ]
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "qscript",
+        "scopeName": "source.qscript",
+        "path": "./syntaxes/qscript.tmLanguage.json"
+      }
+    ]
+  },
+  "devDependencies": {
+    "vscode": "^1.1.37"
+  },
+  "dependencies": {
+    "typescript": "^5.9.2"
+  }
+}
