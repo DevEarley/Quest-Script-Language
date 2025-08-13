@@ -5,7 +5,7 @@
 	"patterns": [	
 			{				
 				"name": "support.property-value.qscript",
-				"match": "(.*)(?:=\")(?:.*)$",
+				"match": "(?:.*_[0-9]*_)(.*)(?:=)(?:.*)$",
 				"captures": {
 					"1":{
 						"name":"entity.name.class"
@@ -14,7 +14,7 @@
 			},	
 				{				
 				"name": "support.property-value.qscript",
-				"match": "(.*)(?:=)(?:.*)$",
+				"match": "(?:.*_[0-9]*_)(.*)(?:=)$",
 				"captures": {
 					"1":{
 						"name":"entity.name.class"

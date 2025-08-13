@@ -31,3 +31,23 @@
 - Updated on 8/12/25
 
 ```
+
+
+#Compile
+```
+npm run compile
+```
+
+#Run
+
+Compile before running!
+In Visual Studio Code, press F5 to run on windows.
+
+#Package
+```
+npm run package
+```
+
+#Install
+
+Download (or build) the VSIX file. Open Visual Studio, open the extensions view, click the `...` in the upper left and click `Install from VSIX...` from the dropdown menu.

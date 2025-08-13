@@ -50,47 +50,25 @@ class QScriptDocumentSymbolProvider implements vscode.DocumentSymbolProvider {
                 else if (symbol_name.startsWith("[")) 
                 {                   
                     if(symbol_string.includes("\"") )
-                    {                         
-                        if(symbol_string.includes(",") )
-                        {
-                            let split_symbols = symbol_string.replaceAll("\"","").split(",");
-                            for (let s = 0; s < split_symbols.length; s++) 
-                            {
-                                 var name__ =    split_symbols[s]
-                                 let symbol = new vscode.DocumentSymbol(
-                                     name__,
-                                     "QS Function",
-                                     vscode.SymbolKind.Function,
-                                     line.range, line.range)
-                                if(last_config_variable != null){
-                                    last_config_variable.children.push(symbol)
-                                }
-                                else{
-                                    symbols.push(symbol)
-                                }
+                    {                                        
+                        let symbol = new vscode.DocumentSymbol(
+                            symbol_string.replaceAll("\"",""),
+                            "QS Marker",
+                            vscode.SymbolKind.Array,
+                            line.range, line.range)
+                            if(last_config_variable != null){
+                                last_config_variable.children.push(symbol)
                             }
-                        }
-                        else
-                        {
-                            let symbol = new vscode.DocumentSymbol(
-                                symbol_string.replaceAll("\"",""),
-                                "QS Marker",
-                                vscode.SymbolKind.Function,
-                                line.range, line.range)
-                                if(last_config_variable != null){
-                                    last_config_variable.children.push(symbol)
-                                }
-                                else{
-                                    symbols.push(symbol)
-                                }                           
-                        }
-                    }
+                            else{
+                                symbols.push(symbol)
+                            }                           
+                        }                    
                     else
                     {
                         let symbol = new vscode.DocumentSymbol(
                                 symbol_string,
                                 "QS Marker",
-                                vscode.SymbolKind.Function,
+                                vscode.SymbolKind.Array,
                                 line.range, line.range)
                                 if(last_config_variable != null){
                                     last_config_variable.children.push(symbol)
@@ -100,6 +78,76 @@ class QScriptDocumentSymbolProvider implements vscode.DocumentSymbolProvider {
                                 }
                     }
                 }   
+                else if (symbol_name.startsWith("go["))
+                {
+                    let symbol = new vscode.DocumentSymbol(
+                        symbol_name.replaceAll("go[","").replaceAll("]",""),
+                        "QS GO",
+                        vscode.SymbolKind.Event,
+                        line.range, line.range)
+                    if(last_config_variable != null){
+                        last_config_variable.children.push(symbol)
+                    }
+                    else{
+                        symbols.push(symbol)
+                    }        
+                } 
+                   else if (symbol_name.startsWith("choice[")||symbol_name.startsWith("choices["))
+                {
+                    let split_strings = symbol_name.replaceAll("choice[","").replaceAll("choices[","").split(",")
+                    for(let split =0; split < split_strings.length;split++){
+
+                        let symbol = new vscode.DocumentSymbol(
+                            split_strings[split].replaceAll("]",""),
+                            "QS CHOICE",
+                            vscode.SymbolKind.Event,
+                            line.range, line.range)
+                        if(last_config_variable != null){
+                            last_config_variable.children.push(symbol)
+                        }
+                        else{
+                            symbols.push(symbol)
+                        }        
+                    }
+                    
+                } 
+                 else if (symbol_name.startsWith("do["))
+                {
+                    let symbol = new vscode.DocumentSymbol(
+                        symbol_name.replaceAll("do[","").replaceAll("]",""),
+                        "QS DO",
+                        vscode.SymbolKind.Field,
+                        line.range, line.range)
+                    if(last_config_variable != null){
+                        last_config_variable.children.push(symbol)
+                    }
+                    else{
+                        symbols.push(symbol)
+                    }        
+                }
+                  else if (symbol_name.startsWith("if["))
+                {
+                    var split =  symbol_name.replaceAll("if[","").split("]")
+
+                    let symbol_1 = new vscode.DocumentSymbol(
+                      split[0],
+                        "QS IF PREDICATE",
+                        vscode.SymbolKind.Boolean,
+                        line.range, line.range)
+                    let symbol_2 = new vscode.DocumentSymbol(
+                      split[1],
+                        "QS IF Function",
+                        vscode.SymbolKind.Function,
+                        line.range, line.range)
+                    if(last_config_variable != null){
+                        last_config_variable.children.push(symbol_1)
+                        last_config_variable.children.push(symbol_2)
+                    }
+                    else{
+                        symbols.push(symbol_1)
+                        symbols.push(symbol_2)
+                    }        
+                }
            }   
          resolve(symbols)
         });
