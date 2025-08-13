@@ -14,9 +14,8 @@
     ],
 	"folding": {
 		"markers": {
-			"start": "SCRIPT\\=\"$",
-			"end": "^\"",
-      
+			"start": "^(#region|#REGION)",
+			"end": "^(#endregion|#ENDREGION)",      
 		}
 	},
 
