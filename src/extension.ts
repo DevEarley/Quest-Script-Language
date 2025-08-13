@@ -37,8 +37,8 @@ class QScriptDocumentSymbolProvider implements vscode.DocumentSymbolProvider {
                    continue
                 }
                 let symbol_string = symbol_name.replace("[","").replace("]","");
-                if (symbol_string.endsWith("=\"")) {
-                    var name__ = symbol_string.replaceAll("=\"","")
+                if (symbol_string.endsWith("=\"")||symbol_string.endsWith("=\\\"")) {
+                    var name__ = symbol_string.replaceAll("=\"","").replaceAll("=\\\"","")
                     let symbol = new vscode.DocumentSymbol(
                                 name__,
                                 "Config Variable",

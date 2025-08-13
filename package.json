@@ -39,7 +39,8 @@
         ],
         "extensions": [
           ".qscript",
-          ".cfg"
+          ".cfg",          
+          ".tres"
         ],
         
         "configuration": "./language-configuration.json"

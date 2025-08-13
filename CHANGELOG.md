@@ -6,4 +6,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
-- Initial release
+
+### Added
+- v1.1.3 Support for *.TRES files
+
+## v1.1.2
+### Added
+-  v1.1.2 Support for *.qscript files
+-  v1.1.2 Support for *.cfg files
