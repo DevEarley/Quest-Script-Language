@@ -2,7 +2,7 @@
   "comments": {
 
     "lineComment": {
-      "comment": "//",
+      "comment": "todo=",
       "noIndent": true
     }
   },
@@ -20,8 +20,9 @@
     ],
 	"folding": {
 		"markers": {
-			"start": "^(#region|#REGION)",
-			"end": "^(#endregion|#ENDREGION)",      
+			"start": "^(region=\"|region=\\\\\")(?!end)",
+			// "start": "^(region=|REGION=|region =|REGION =)(?! *\\*\"(?:end|END)\\*\")",
+			"end": "^(region=)(\"end\"|\\\\\"end\\\\\")"
 		}
 	},
 

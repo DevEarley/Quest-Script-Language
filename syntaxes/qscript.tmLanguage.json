@@ -26,25 +26,17 @@
 				"match":"^(?:\\[)(.*)(?:\\])" 			
 			},
 			{				
-				"name": "comment.qscript",
-				"match":"^(//.*)" 			
+				"name": "constant.qscript",
+				"match":"^(todo=.*)" 			
 			},
 			{				
 				"name": "comment.qscript",
-				"match":"^(#region.*)" 			
+				"match":"^(region *=.*)" 			
 			},
 			{				
 				"name": "comment.qscript",
-				"match":"^(#endregion.*)" 			
-			},
-			{				
-				"name": "comment.qscript",
-				"match":"^(#REGION.*)" 			
-			},
-			{				
-				"name": "comment.qscript",
-				"match":"^(#ENDREGION.*)" 			
-			},
+				"match":"^(REGION *=.*)" 			
+			},		
 			{				
 				"name": "entity.go.qscript",
 				"match":"^(go)(?:\\[)(.*)(?:\\])" 		,

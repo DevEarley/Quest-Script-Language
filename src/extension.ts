@@ -21,14 +21,42 @@ class QScriptDocumentSymbolProvider implements vscode.DocumentSymbolProvider {
             let last_region_variable: any = null
             for (var i = 0; i < document.lineCount; i++) {
 
+
                 let line: any = document.lineAt(i);
                 stuff.push(line);
+
                 let symbol_name: string | false = (line.b ?? line.text) ?? "default name"
                 if (symbol_name == false) {
                     continue
                 }
+
                 let symbol_string = symbol_name.replace("[", "").replace("]", "");
-                if (symbol_string.endsWith("=\"") || symbol_string.endsWith("=\\\"")) {
+
+                var is_end_region_symbol = symbol_name.startsWith("region=\"end\"") ||
+                    symbol_name.startsWith("REGION=\"END\"") ||
+                    symbol_name.startsWith("region =\"end\"") ||
+                    symbol_name.startsWith("REGION =\"END\"") ||
+                    symbol_name.startsWith("region= \"end\"") ||
+                    symbol_name.startsWith("REGION= \"END\"") ||
+                    symbol_name.startsWith("region = \"end\"") ||
+                    symbol_name.startsWith("REGION = \"END\"")
+
+                var is_region_symbol = is_end_region_symbol == false && (symbol_name.startsWith("region") || symbol_name.startsWith("REGION"))
+
+                if (is_region_symbol) {
+                    var name__ = symbol_string.replaceAll("region", "").replaceAll("REGION", "").replaceAll("=", "").replaceAll("\"", "").replaceAll("\\", "")
+                    let symbol = new vscode.DocumentSymbol(
+                        name__,
+                        "Region",
+                        vscode.SymbolKind.File,
+                        line.range, line.range)
+                    last_region_variable = symbol;
+                    symbols.push(symbol)
+                }
+                else if (is_end_region_symbol) {
+                    last_region_variable = null
+                }
+                else if (symbol_string.endsWith("=\"") || symbol_string.endsWith("=\\\"")) {
                     var name__ = symbol_string.replaceAll("=\"", "").replaceAll("=\\\"", "")
                     let symbol = new vscode.DocumentSymbol(
                         name__,
@@ -42,19 +70,6 @@ class QScriptDocumentSymbolProvider implements vscode.DocumentSymbolProvider {
                     else {
                         last_region_variable.children.push(symbol);
                     }
-                }
-                else if (symbol_name.startsWith("#region") || symbol_name.startsWith("#REGION")) {
-                    var name__ = symbol_string.replaceAll("#region", "").replaceAll("#REGION", "")
-                    let symbol = new vscode.DocumentSymbol(
-                        name__,
-                        "Region",
-                        vscode.SymbolKind.File,
-                        line.range, line.range)
-                    last_region_variable = symbol;
-                    symbols.push(symbol)
-                }
-                else if (symbol_name.startsWith("#endregion") || symbol_name.startsWith("#ENDREGION")) {
-                    last_region_variable = null
                 }
                 else if (symbol_name.startsWith("[")) {
                     if (symbol_string.includes("\"")) {
