@@ -39,7 +39,9 @@ class QScriptDocumentSymbolProvider implements vscode.DocumentSymbolProvider {
                     symbol_name.startsWith("region= \"end\"") ||
                     symbol_name.startsWith("REGION= \"END\"") ||
                     symbol_name.startsWith("region = \"end\"") ||
-                    symbol_name.startsWith("REGION = \"END\"")
+                    symbol_name.startsWith("REGION = \"END\"") ||
+                    symbol_name.startsWith("region=\\\"end\\\"") ||
+                    symbol_name.startsWith("region=\\\\\"end\\\\\"")
 
                 var is_region_symbol = is_end_region_symbol == false && (symbol_name.startsWith("region") || symbol_name.startsWith("REGION"))
 
