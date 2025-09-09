@@ -20,20 +20,26 @@
 		],
 		"description": "Go to marker"
 	},
-	
-	"If Statement": {
+	"Choice": {
+		"prefix": "choice",
+		"body": [
+			"choices[${1:choice #1},${2:choice #2}]",
+			"[$1]",
+			"go[${3}]",
+			"[$2]",
+			"[$3]"
+		],
+		"description": "Choice(s)"
+	},
+	"If": {
 		"prefix": "if",
 		"body": [
-			"if[$function($params)]$makerTrue",
-            "go[$markerFalse]",
-            "",
-			"[$makerTrue]", 
-            "REPLACE_ME",     
-            "",      
-			"[$markerFalse]",
-            "REPLACE_ME",
+			"if[${1:predicate}]${2:marker}",
+			"[\"$1\" is false]",
+			"go[end of \"if $1\"]",
+			"[$2]",
+			"[end of \"if $1\"]"
 		],
-		"description": "If block"
+		"description": "Choice(s)"
 	}
-	
 }
